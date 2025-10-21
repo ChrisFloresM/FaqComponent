@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+    --color-purple-950: #301534;
+    --color-pruple-600: #8B6990;
+    --color-purple-100: #F8EEFF;
+
+    --color-violet-600: #AD28EB;
+
+    /* Spacing */
+    --spacing-100: 0.5rem;
+    --spacing-200: 1rem;
+    --spacing-300: 1.5rem;
+    --spacing-400: 2rem;
+    --spacing-500: 2.5rem;
+
+    --font-worksans: "Work Sans", sans-serif;
+
+    /* Font */
+    --text-preset-1: 3.5rem;
+    --leading-preset-1: 4.125rem;
+
+    --text-preset-2: 1.125rem;
+    --leading-preset-2: 1.3215rem;
+
+    --text-preset-3: 1rem;
+    --leading-preset-3: 1.5rem;
+}
+
+
