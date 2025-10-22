@@ -1,0 +1,44 @@
+interface QuestionCardProps {
+  question: string;
+  answer: string;
+  id: number;
+  currentOpen: number;
+  onOpen: (id: number) => void;
+}
+
+function QuestionCard({
+  question,
+  answer,
+  id,
+  currentOpen,
+  onOpen,
+}: QuestionCardProps) {
+  const isOpen = currentOpen === id;
+  return (
+    <li className="first:pb-300 last:pt-300 [&:not(:first-child):not(:last-child)]:py-300">
+      <div className="flex justify-between gap-300">
+        <h2 className="text-preset-3 sm:text-preset-2 font-bold text-purple-950">
+          {question}
+        </h2>
+        <button onClick={() => onOpen(id)} className="hover:cursor-pointer">
+          <img
+            src={`${isOpen ? "/icon-minus.svg" : "/icon-plus.svg"}`}
+            alt={`A ${isOpen ? "minus" : "plus"} icon`}
+            className="min-h-[30px] min-w-[30px]"
+          />
+        </button>
+      </div>
+      <div
+        className={`${isOpen ? "grid-rows-[1fr] py-300" : "grid-rows-[0fr]"} grid overflow-hidden transition-all duration-[300ms]`}
+      >
+        <p className="text-preset-4 sm:text-preset-3 min-h-0 text-purple-600">
+          {answer}
+        </p>
+      </div>
+    </li>
+  );
+}
+
+// `grid grid-rows-[0] overflow-hidden transition-all duration-300`
+
+export default QuestionCard;
