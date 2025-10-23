@@ -20,7 +20,14 @@ function QuestionCard({
         <h2 className="text-preset-3 sm:text-preset-2 font-bold text-purple-950">
           {question}
         </h2>
-        <button onClick={() => onOpen(id)} className="hover:cursor-pointer">
+        <button
+          aria-label="Expand FAQ answer"
+          aria-controls={`faq-${id}`}
+          aria-expanded={isOpen}
+          id={`faq-${id}-toggle`}
+          onClick={() => onOpen(id)}
+          className="hover:cursor-pointer"
+        >
           <img
             src={`${isOpen ? "/icon-minus.svg" : "/icon-plus.svg"}`}
             alt={`A ${isOpen ? "minus" : "plus"} icon`}
@@ -30,6 +37,9 @@ function QuestionCard({
       </div>
       <div
         className={`${isOpen ? "grid-rows-[1fr] py-300" : "grid-rows-[0fr]"} grid overflow-hidden transition-all duration-[300ms]`}
+        id={`faq-${id}`}
+        aria-labelledby={`faq-${id}-toggle`}
+        role="Answer text"
       >
         <p className="text-preset-4 sm:text-preset-3 min-h-0 text-purple-600">
           {answer}
