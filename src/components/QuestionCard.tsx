@@ -2,7 +2,7 @@ interface QuestionCardProps {
   question: string;
   answer: string;
   id: number;
-  currentOpen: number;
+  currentOpen: number | null;
   onOpen: (id: number) => void;
 }
 
@@ -16,7 +16,7 @@ function QuestionCard({
   const isOpen = currentOpen === id;
   return (
     <li className="first:pb-300 last:pt-300 [&:not(:first-child):not(:last-child)]:py-300">
-      <div className="flex justify-between gap-300">
+      <section className="flex justify-between gap-300">
         <h2 className="text-preset-3 sm:text-preset-2 font-bold text-purple-950">
           {question}
         </h2>
@@ -27,6 +27,7 @@ function QuestionCard({
           id={`faq-${id}-toggle`}
           onClick={() => onOpen(id)}
           className="hover:cursor-pointer"
+          type="button"
         >
           <img
             src={`${isOpen ? "/icon-minus.svg" : "/icon-plus.svg"}`}
@@ -34,17 +35,17 @@ function QuestionCard({
             className="min-h-[30px] min-w-[30px]"
           />
         </button>
-      </div>
-      <div
+      </section>
+      <section
         className={`${isOpen ? "grid-rows-[1fr] py-300" : "grid-rows-[0fr]"} grid overflow-hidden transition-all duration-[300ms]`}
         id={`faq-${id}`}
         aria-labelledby={`faq-${id}-toggle`}
-        role="Answer text"
+        role="region"
       >
         <p className="text-preset-4 sm:text-preset-3 min-h-0 text-purple-600">
           {answer}
         </p>
-      </div>
+      </section>
     </li>
   );
 }

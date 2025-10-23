@@ -41,11 +41,11 @@ const questions: QuestionType[] = [
 ];
 
 function QuestionsList() {
-  const [currentOpen, setCurrentOpen] = useState<number>(0);
+  const [currentOpen, setCurrentOpen] = useState<number | null>(null);
 
   function handleOpen(id: number) {
     if (id === currentOpen) {
-      setCurrentOpen(0);
+      setCurrentOpen(null);
       return;
     }
     setCurrentOpen(id);
